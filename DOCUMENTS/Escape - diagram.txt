@@ -1,0 +1,149 @@
+gamestart_0 
+You are at the royal party in beautiful castle, It is time to earn some money.
+Press P to Look for some rich people, press C to look for gold cutlery, press E to go to entrance room.
+
+gamestart_1
+You see a lot of people, someone dancing, bard plays music, as always you really need to get some gold!
+Press P to Look for some rich people, press C to look for gold cutlery, press E to go to entrance room.
+
+peaple_0 P
+There are many people with fat pockets, but all around you see guards that look on you too.
+Press C to look for some golden cutlery, press E to go to entrance room.
+
+cutlery_0 C
+You see a lot golden plates silver spoons and other shiny things. You see guards but they do not watch you for now. 
+Press T to take fast as much you can, press S be carefoul and take only little shiny things to your pockets, press E to do nothing and go to entrance room.
+
+entrance_0 E
+Entrance room - you been here moment ago.
+Press G to go back to the party.
+
+caught_0 T
+Someone shout to guards Thief!! - and in this moment someone grab you from behind. You get hit in the head. 
+Press C to continue - you see nothing and hear only noise.
+
+cutlery_1 S
+You took two golden plates and silver knife, fork and spoon.
+Press T to take more, press E to escape by entrance to your hideout.
+
+entrance_1 E
+You are at entrance room, you see guards, but in next second you hear that someone shout to guards THIEF!! - and in the moment someone grab you from behind. You get hit in the head.
+Press C to continue - you see nothing and hear only noise.
+
+=========================================================================================================================
+
+// Enum:
+gamestart_0, gamestart_0, peaple_0, cutlery_0, cutlery_1, entrance_0, entrance_1, caught_0
+
+//update
+else if (myState == States.gamestart_0)     {gamestart_0();
+else if (myState == States.peaple_0)        {peaple_0();
+else if (myState == States.cutlery_0)       {cutlery_0();
+else if (myState == States.cutlery_1)       {cutlery_1();
+else if (myState == States.entrance_0)      {entrance_0();
+else if (myState == States.entrance_1)      {entrance_1();
+else if (myState == States.caught_0)        {caught_0();
+else if (myState == States.gamestart_1)     {gamestart_1();
+
+//States - Methods
+
+/////////////// Mockup 
+void in_closet() {
+    text.text = "Inside the closet you see a cleaner's uniform that looks about your size! " +
+                "Seems like your day is looking-up.\n\n" +
+                "Press D to Dress up, or R to Return to the corridor";
+if      (Input.GetKeyDown(KeyCode.R))  {myState = States.corridor_2;}
+else if (Input.GetKeyDown(KeyCode.D))  {myState = States.corridor_3;}
+}
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+
+
+///////////////
+
+void gamestart_0() {
+    text.text = "You are at the royal party in beautiful castle, It is time to earn some money. " +
+                "\n\n" +
+                "Press P to Look for some rich people, press C to look for gold cutlery, press E to go to entrance room.";
+if      (Input.GetKeyDown(KeyCode.P))  {myState = States.peaple_0;}
+else if (Input.GetKeyDown(KeyCode.C))  {myState = cutlery_0;}
+else if (Input.GetKeyDown(KeyCode.E))  {myState = entrance_0;}
+}
+
+
+void gamestart_1() {
+    text.text = "You see a lot of people, someone dancing, bard plays music, as always you really need to get some gold! " +
+                "\n\n" +
+                "Press P to Look for some rich people, press C to look for gold cutlery, press E to go to entrance room.";
+if      (Input.GetKeyDown(KeyCode.P))  {myState = States.peaple_0;}
+else if (Input.GetKeyDown(KeyCode.C))  {myState = cutlery_0;}
+else if (Input.GetKeyDown(KeyCode.E))  {myState = entrance_0;}
+}
+
+
+
+
+
+///////////////
+
+void peaple_0() {
+    text.text = "There are many people with fat pockets, but all around you see guards that look on you too. " +
+                "\n\n" +
+                "Press C to look for some golden cutlery, press E to go to entrance room.";
+if      (Input.GetKeyDown(KeyCode.C))  {myState = States.cutlery_0;}
+else if (Input.GetKeyDown(KeyCode.E))  {myState = States.entrance_0;}
+}
+
+///////////////
+
+void cutlery_0() {
+    text.text = "You see a lot golden plates silver spoons and other shiny things. You see guards but they do not watch you for now. " +
+                "\n\n" +
+                "Press T to take fast as much you can, press S be carefoul and take only little shiny things to your pockets, " + 
+                "press E to do nothing and go to entrance room.";
+if      (Input.GetKeyDown(KeyCode.T))  {myState = States.caught_0;}
+else if (Input.GetKeyDown(KeyCode.S))  {myState = States.cutlery_1;}
+else if (Input.GetKeyDown(KeyCode.E))  {myState = entrance_0;}
+}
+
+
+void cutlery_1() {
+    text.text = "You took two golden plates and silver knife, fork and spoon. " +
+                "\n\n" +
+                "Press T to take more, press E to escape by entrance to your hideout.";
+if      (Input.GetKeyDown(KeyCode.T))  {myState = States.caught_0;}
+else if (Input.GetKeyDown(KeyCode.E))  {myState = States.entrance_1;}
+}
+
+///////////////
+
+void entrance_0() {
+    text.text = "Entrance room - you been here moment ago. " +
+                "\n\n" +
+                "Press G to go back to the party.";
+if      (Input.GetKeyDown(KeyCode.G))  {myState = States.gamestart_1;}
+}
+
+void entrance_1() {
+    text.text = "You are at entrance room, you see guards, but in next second you hear that someone shout to guards THIEF!! " +
+                "Next moment someone grab you from behind. You get hit in the head.\n\n" +
+                "Press C to continue - you see nothing and hear only noise.";
+if      (Input.GetKeyDown(KeyCode.C))  {myState = States.cell;}
+}
+
+
+//////////////
+
+
+void caught_0() {
+    text.text = "Someone shout to guards Thief!! - and in this moment someone grab you from behind. You get hit in the head.  " +
+                "\n\n" +
+                "Press C to continue - you see nothing and hear only noise.";
+if      (Input.GetKeyDown(KeyCode.C))  {myState = States.cell;}
+}
+
+
+
+
+
+
+
